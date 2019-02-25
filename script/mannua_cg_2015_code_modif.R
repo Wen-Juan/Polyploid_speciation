@@ -2,9 +2,9 @@ install.packages("lmerTest")
 library(lme4)
 library(lmerTest)
 
-setwd("/Users/Wen-Juan/my_postdoc/postdoc_manuscripts/peduncle_mercurialis/john/writing_fragments/Luis_figures")
+setwd("~/Dropbox (Amherst College)/my_postdoc/postdoc_manuscripts/WMa_publication/peduncle_mercurialis/john/writing_fragments/Luis_figures")
 rm(list=ls(all=TRUE))
-gen<-read.table("compiled_nomissingvalues.csv", header=T, sep=";")
+gen<-read.table("compiled_nomissingvalues2.csv", header=T, sep=",")
 gen$block<-as.factor(gen$block)
 names(gen)
 
@@ -34,6 +34,72 @@ mod_sexallo<-lmer(sexallo~morph+(1|pop)+(1|block), data=gen)
 anova(mod_sexallo)
 rand(mod_sexallo)
 
+mod_p_length<-lmer(p_length~morph+(1|pop)+(1|block), data=gen)
+anova(mod_p_length)
+
+mod_b_length<-lmer(b_length~morph+(1|pop)+(1|block), data=gen)
+anova(mod_b_length)
+
+mod_b_w<-lmer(b_w~morph+(1|pop)+(1|block), data=gen)
+anova(mod_b_w)
+
+mod_b_area<-lmer(b_area~morph+(1|pop)+(1|block), data=gen)
+anova(mod_b_area)
+
+mod_b_peri<-lmer(b_peri~morph+(1|pop)+(1|block), data=gen)
+anova(mod_b_peri)
+
+mod_b_circ<-lmer(b_circ~morph+(1|pop)+(1|block), data=gen)
+anova(mod_b_circ)
+
+mod_per_area<-lmer(per_area~morph+(1|pop)+(1|block), data=gen)
+anova(mod_per_area)
+
+mod_bla_pet<-lmer(bla_pet~morph+(1|pop)+(1|block), data=gen)
+anova(mod_bla_pet)
+
+mod_height<-lmer(height~morph+(1|pop)+(1|block), data=gen)
+anova(mod_height)
+
+mod_branch_0<-lmer(branch_0~morph+(1|pop)+(1|block), data=gen)
+anova(mod_branch_0)
+
+mod_i.node.3<-lmer(i.node.3~morph+(1|pop)+(1|block), data=gen)
+anova(mod_i.node.3)
+
+mod_bcurly<-lmer(curly~morph+(1|pop)+(1|block), data=gen)
+anova(mod_bcurly)
+
+mod_ped_n<-lmer(ped_n~morph+(1|pop)+(1|block), data=gen)
+anova(ped_n)
+
+mod_top_ped<-lmer(top_ped~morph+(1|pop)+(1|block), data=gen)
+anova(mod_top_ped)
+
+mod_fem_ped<-lmer(fem_ped~morph+(1|pop)+(1|block), data=gen)
+anova(mod_fem_ped)
+
+mod_branch_1<-lmer(branch_1~morph+(1|pop)+(1|block), data=gen)
+anova(mod_branch_1)
+
+mod_branch_2<-lmer(branch_2~morph+(1|pop)+(1|block), data=gen)
+anova(mod_branch_2)
+
+mod_i.node_4<-lmer(i.node_4~morph+(1|pop)+(1|block), data=gen)
+anova(mod_i.node_4)
+
+mod_i.node_5<-lmer(i.node_5~morph+(1|pop)+(1|block), data=gen)
+anova(mod_i.node_5)
+
+
+#correct for multiple test
+p <- c(0.02366,0.0003243, 0.0001166,5.687e-05,0.001375,0.0004369,0.0001371,2.898e-05,0.6599, 0.9784,0.06994,0.4687,0.01086,
+       0.02169,0.7687,0.8103,0.004948,0.01543,0.003645,3.584e-05,3.677e-06,6.953e-07,0.01795,0.03068,
+       6.953e-07,0.01795,0.03068,0.01785,0.02478)
+
+p <- c (0.54,0.03,0.02,0.84,0.09,0.90,0.67,0.95,0.0001,0.02,0.24,0.03,0.05,0.01,0.04,0.05,0.01, 0.19,0.0001,0.0001,0.0001,0.0001,0.0001,0.0001,
+        0.0001, 0.01,0.0001,0.0001,0.0001,0.0001)
+p.adjust(p, method = "bonferroni", n =30)
 
 rm(list=ls(all=TRUE))
 gen<-read.table("cg_gh_2015.csv", header=T, sep=";")
@@ -167,7 +233,7 @@ rand(mod_blade_petiole)
 setwd("/Users/Wen-Juan/my_postdoc/postdoc_manuscripts/peduncle_mercurialis/john/writing_fragments/Luis_figures")
 
 rm(list=ls(all=TRUE))
-gen<-read.table("compiled_nomissingvalues.csv", header=T, sep=";")
+gen<-read.table("compiled_nomissingvalues.csv", header=T, sep=",")
 names(gen)[4:30]<-1:27
 
 head(gen)
