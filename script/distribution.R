@@ -16,7 +16,7 @@ longitude <- locations$Longitude
 pop <- locations$Name_publication
 survey.point <- locations$Morph
 
-##########important to run the below scripts successfully, you need to register a Google API key.
+##########Important to run the below scripts successfully, you need to register a Google API key.
 ##########To obtain an API key and enable services, go to https://cloud.google.com/maps-platform/
 
 basemap <- get_map(location="Iberian Peninsula", zoom = 6, scale = "auto", maptype="toner-lite", color=c("bw"),crop=TRUE)
