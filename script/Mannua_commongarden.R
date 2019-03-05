@@ -8,31 +8,30 @@ gen<-read.table("compiled_nomissingvalues2.csv", header=T, sep=",")
 gen$block<-as.factor(gen$block)
 names(gen)
 
-# Do P+ and P- morphs differ in terms of biomass and reproductive allocation?
+# Do P+ and P- morphs differ in terms of phenotypic traits
 mod_biomass<-lmer(biom~morph+(1|pop)+(1|block), data=gen)
 anova(mod_biomass)
-rand(mod_biomass)
+
 mod_pollen<-lmer(pollen~morph+(1|pop)+(1|block), data=gen)
 anova(mod_pollen)
-rand(mod_pollen)
+
 mod_seed<-lmer(seed~morph+(1|pop)+(1|block), data=gen)
 anova(mod_seed)
-rand(mod_seed)
+
 mod_seedn<-lmer(seedn~morph+(1|pop)+(1|block), data=gen)
 anova(mod_seedn)
-rand(mod_seedn)
+
 mod_avgseedw<-lmer(avgseedw~morph+(1|pop)+(1|block), data=gen)
 anova(mod_avgseedw)
-rand(mod_avgseedw)
+
 mod_pollalloc<-lmer(pollalloc~morph+(1|pop)+(1|block), data=gen)
 anova(mod_pollalloc)
-rand(mod_pollalloc)
+
 mod_seedallo<-lmer(seedallo~morph+(1|pop)+(1|block), data=gen)
 anova(mod_seedallo)
-rand(mod_seedallo)
+
 mod_sexallo<-lmer(sexallo~morph+(1|pop)+(1|block), data=gen)
 anova(mod_sexallo)
-rand(mod_sexallo)
 
 mod_p_length<-lmer(p_length~morph+(1|pop)+(1|block), data=gen)
 anova(mod_p_length)
@@ -91,156 +90,21 @@ anova(mod_i.node_4)
 mod_i.node_5<-lmer(i.node_5~morph+(1|pop)+(1|block), data=gen)
 anova(mod_i.node_5)
 
-
 #correct for multiple test
-p <- c(0.02366,0.0003243, 0.0001166,5.687e-05,0.001375,0.0004369,0.0001371,2.898e-05,0.6599, 0.9784,0.06994,0.4687,0.01086,
-       0.02169,0.7687,0.8103,0.004948,0.01543,0.003645,3.584e-05,3.677e-06,6.953e-07,0.01795,0.03068,
-       6.953e-07,0.01795,0.03068,0.01785,0.02478)
-
 p <- c (0.54,0.03,0.02,0.84,0.09,0.90,0.67,0.95,0.0001,0.02,0.24,0.03,0.05,0.01,0.04,0.05,0.01, 0.19,0.0001,0.0001,0.0001,0.0001,0.0001,0.0001,
         0.0001, 0.01,0.0001,0.0001,0.0001,0.0001)
 p.adjust(p, method = "bonferroni", n =30)
 
-rm(list=ls(all=TRUE))
-gen<-read.table("cg_gh_2015.csv", header=T, sep=";")
-gen$Block<-as.factor(gen$Block)
-gen$Table<-as.factor(gen$Table)
-names(gen)
 
-"height"     "height.w.i" "branch_0"   "branch_1"   "branch_2"   "i.node.3"   "i.node_4"   "i.node_5"   
-"ped_n"      "top_ped"    "fem_ped"    "p_1_length" "p_1_clus"   "p_2_length"
-"p_2_clus"   "p_3_length" "p_3_clus"   "p_4_length" "p_4_clus"   "p_5_length" "p_5_clus"   "avg_p"      
-
-mod_height<-lmer(height~Morph+(1|Tag)+(1|Block), data=gen)
-anova(mod_height)
-rand(mod_height)
-
-
-mod_height.w.i<-lmer(height.w.i~Morph+(1|Tag)+(1|Block), data=gen)
-anova(mod_height.w.i)
-rand(mod_height.w.i)
-
-mod_branch_0<-lmer(branch_0~Morph+(1|Tag)+(1|Block), data=gen)
-anova(mod_branch_0)
-rand(mod_branch_0)
-
-mod_branch_1<-lmer(branch_1~Morph+(1|Tag)+(1|Block), data=gen)
-anova(mod_branch_1)
-rand(mod_branch_1)
-
-mod_branch_2<-lmer(branch_2~Morph+(1|Tag)+(1|Block), data=gen)
-anova(mod_branch_2)
-rand(mod_branch_2)
-
-mod_i.node.3<-lmer(i.node.3~Morph+(1|Tag)+(1|Block), data=gen)
-anova(mod_i.node.3)
-rand(mod_i.node.3)
-
-mod_i.node_4<-lmer(i.node_4~Morph+(1|Tag)+(1|Block), data=gen)
-anova(mod_i.node_4)
-rand(mod_i.node_4)
-
-mod_i.node_5<-lmer(i.node_5~Morph+(1|Tag)+(1|Block), data=gen)
-anova(mod_i.node_5)
-rand(mod_i.node_5)
-
-mod_ped_n<-lmer(ped_n~Morph+(1|Tag)+(1|Block), data=gen)
-anova(mod_ped_n)
-rand(mod_ped_n)
-
-mod_avg_p<-lmer(avg_p~Morph+(1|Tag)+(1|Block), data=gen)
-anova(mod_avg_p)
-rand(mod_avg_p)
-
-mod_fem_ped<-lmer(fem_ped~Morph+(1|Tag)+(1|Block), data=gen)
-anova(mod_fem_ped)
-rand(mod_fem_ped)
-
-
-mod_top_ped<-lmer(top_ped~Morph+(1|Tag)+(1|Block), data=gen)
-anova(mod_top_ped)
-rand(mod_top_ped)
-
-
-mod_avg_clus<-lmer(avg_clus~Morph+(1|Tag)+(1|Block), data=gen)
-anova(mod_avg_clus)
-rand(mod_avg_clus)
-
-
-"curly"    "trichomes"
-mod_curly<-glmer(curly~Morph+(1|Tag)+(1|Block), family=binomial, data=gen)
-mod_curly2<-glmer(curly~Morph+(1|Block), family=binomial, data=gen)
-mod_curly3<-glmer(curly~Morph+(1|Tag), family=binomial, data=gen)
-anova(mod_curly)
-anova(mod_curly,mod_curly2)
-anova(mod_curly,mod_curly3)
-summary(mod_curly)
-inv.logit(-2.7806)-inv.logit(-2.7806+0.68)
-inv.logit(0.8921)-inv.logit(0.8921+0.5382)
-
-mod_trichomes<-glmer(trichomes~Morph+(1|Tag)+(1|Block), family=binomial,data=gen)
-mod_trichomes3<-glmer(trichomes~Morph+(1|Tag), family=binomial,data=gen)
-mod_trichomes2<-glmer(trichomes~Morph+(1|Block), family=binomial,data=gen)
-anova(mod_trichomes)
-anova(mod_trichomes,mod_trichomes2)
-anova(mod_trichomes,mod_trichomes3)
-summary(mod_trichomes)
-inv.logit(-2.0891)-inv.logit(-2.0891+0.777)
-inv.logit(-3.4417)-inv.logit(-3.4417+0.8035)
-
-rm(list=ls(all=TRUE))
-gen<-read.table("leaves.csv", header=T, sep=";")
-gen$Rep<-as.factor(gen$Rep)
-names(gen)
-
-"petioleLength"    "bladeLength"      "bladeWidth"       "bladeArea"        "bladePerimeter"   "bladeCircularity" 
-"perimeter_area"   "blade_petiole" 
-
-mod_petioleLength<-lmer(petioleLength~morph+(1|genotype)+(1|Rep), data=gen)
-anova(mod_petioleLength)
-rand(mod_petioleLength)
-
-mod_bladeLength<-lmer(bladeLength~morph+(1|genotype)+(1|Rep), data=gen)
-anova(mod_bladeLength)
-rand(mod_bladeLength)
-
-mod_bladeWidth<-lmer(bladeWidth~morph+(1|genotype)+(1|Rep), data=gen)
-anova(mod_bladeWidth)
-rand(mod_bladeWidth)
-
-mod_bladeArea<-lmer(bladeArea~morph+(1|genotype)+(1|Rep), data=gen)
-anova(mod_bladeArea)
-rand(mod_bladeArea)
-
-mod_bladePerimeter<-lmer(bladePerimeter~morph+(1|genotype)+(1|Rep), data=gen)
-anova(mod_bladePerimeter)
-rand(mod_bladePerimeter)
-
-mod_bladeCircularity<-lmer(bladeCircularity~morph+(1|genotype)+(1|Rep), data=gen)
-anova(mod_bladeCircularity)
-rand(mod_bladeCircularity)
-
-mod_perimeter_area<-lmer(perimeter_area~morph+(1|genotype)+(1|Rep), data=gen)
-anova(mod_perimeter_area)
-rand(mod_perimeter_area)
-
-mod_blade_petiole<-lmer(blade_petiole~morph+(1|genotype)+(1|Rep), data=gen)
-anova(mod_blade_petiole)
-rand(mod_blade_petiole)
-
-#####################################################################
-
+##PCA plot
 setwd("/Users/Wen-Juan/my_postdoc/postdoc_manuscripts/peduncle_mercurialis/john/writing_fragments/Luis_figures")
 
 rm(list=ls(all=TRUE))
 gen<-read.table("compiled_nomissingvalues.csv", header=T, sep=",")
 names(gen)[4:30]<-1:27
-
 head(gen)
-
 gen2<-gen[,(4:30)]
 
-#Run on R 3.2.2 64!!!!
 
 fit <- princomp(gen2, cor=TRUE)
 summary(fit) # print variance accounted for 
@@ -270,7 +134,7 @@ res.pca <- prcomp(gen[,-c(1:3)],  scale = TRUE)
 library("factoextra")
 
 fviz_pca_var(res.pca, col.var="contrib")
- scale_color_gradient2(low="pink", mid="dark blue",
+scale_color_gradient2(low="pink", mid="dark blue",
            high="red", midpoint=96) +
  theme_minimal()
 fviz_pca_biplot(res.pca,label="var", pointsize = 2.7, repel=TRUE, habillage=gen$morph, palette=c("black","dark grey"), addEllipses=TRUE, ellipse.level=0.95, title=NULL)
@@ -314,7 +178,7 @@ rm(list=ls(all=TRUE))
 gen<-read.table("/Users/Wen-Juan/my_postdoc/postdoc_manuscripts/peduncle_mercurialis/john/writing_fragments/Luis_figures/hyb_plots.txt", header=T, sep = "\t")
 str(gen)      
         
-  gen$hyb<-as.factor(gen$hyb)
+gen$hyb<-as.factor(gen$hyb)
 library(ggplot2)
 gen$cross <- as.character(gen$cross)
 gen$cross <- factor(gen$cross, levels=unique(gen$cross))   # order according to given order
