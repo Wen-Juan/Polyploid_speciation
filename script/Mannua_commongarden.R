@@ -175,7 +175,7 @@ mod2<-lmer(FRE~infl*hybrid+(1|pop), data=gen)
 ############
 
 rm(list=ls(all=TRUE))
-gen<-read.table("/Users/Wen-Juan/my_postdoc/postdoc_manuscripts/peduncle_mercurialis/john/writing_fragments/Luis_figures/hyb_plots.txt", header=T, sep = "\t")
+gen<-read.table("/Users/Wen-Juan/Dropbox (Amherst College)/my_postdoc/postdoc_manuscripts/WMa_publication/peduncle_mercurialis/john/writing_fragments/Luis_figures/hyb_plots.txt", header=T, sep = "\t")
 str(gen)      
         
 gen$hyb<-as.factor(gen$hyb)
@@ -205,6 +205,7 @@ t2<-theme(
   axis.title.x = element_text(face="plain", color="black", size=17),
   axis.title.y = element_text(face="plain", color="black", size=17),
   plot.title = element_text(face="plain", color = "black", size=15) ) 
+
 p5<-p2 + theme_bw() + t2 + labs(x="", y = "Biomass (g)", title= "", size=6)
 p6<-p5+ theme(axis.text.x = element_text(color="black",size=13)) # change aspect $ size of text in x axis
 p7<-p6+ theme(axis.text.y = element_text(size = 13,colour ="black"))
