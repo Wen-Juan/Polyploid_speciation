@@ -5,9 +5,9 @@ library(ggplot2)
 library(ggmap)
 library(maps)
 
-setwd("/Users/Wen-Juan/Dropbox (Amherst College)/my_postdoc/postdoc_manuscripts/WMa_publication/peduncle_mercurialis/john/writing_fragments/")
+setwd("~/Wen-Juan/peduncle_mercurialis/population_distribution/results/")
 
-locations <- read.csv("locations.csv", header = T)
+locations <- read.csv("pop_locations.csv", header = T)
 names(locations)
 print(locations)
 

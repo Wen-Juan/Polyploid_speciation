@@ -3,12 +3,12 @@ install.packages("ggplot2")
 library(ggplot2)
 install.packages("multcomp")
 
-setwd("/Users/Wen-Juan/Dropbox (Amherst College)/my_postdoc/plant/FC_results")
+setwd("~/my_postdoc/plant/FC_results")
 
-fc<-read.table("/Users/Wen-Juan/Dropbox (Amherst College)/my_postdoc/plant/FC_results/results/092016/all_pop_05112016.csv",header=T, sep=",")
+fc<-read.table("~/FC_results/results/flowcytometry_data.csv",header=T, sep=",")
 str(fc)
 
-pdf("/Users/Wen-Juan/Dropbox (Amherst College)/my_postdoc/postdoc_manuscripts/WMa_publication/peduncle_mercurialis/resubmit/main_figures/Genomesize_correct.pdf", width=8, height=8)
+pdf("~/main_figures/Genomesize.pdf", width=8, height=8)
 fc$species <- factor(fc$species)
 fc$species <- reorder(fc$species, fc$order)
 ggplot(fc, aes(x=fc$species, y=C.values,group=species)) +
@@ -20,14 +20,14 @@ geom_dotplot(binaxis='y', stackdir='center',stackratio=1, dotsize=1,binwidth = 0
 dev.off()
 
 ## test whether the genome size is significantly differnet from each other. 
-genome_size<-read.table("/Users/Wen-Juan/Dropbox (Amherst College)/my_postdoc/plant/FC_results/results/092016/all_individuals_05112016.txt",header=T)
+genome_size<-read.table("~/FC_results/results/C_values.txt",header=T)
 genome_size
 head(genome_size)
 str(genome_size)
 
 #check data distribution
-qqnorm(test_morph_0511$C_value)
-shapiro.test(test_morph_0511$C_value) ##data is not normally distributed. 
+qqnorm(genome_size$C_value)
+shapiro.test(genome_size$C_value) ##data is not normally distributed. 
 
 model0<-glm(log(C_value)~morph+Pop-1,family=quasibinomial,data=genome_size)
 summary(model0)
