@@ -6,7 +6,6 @@ library(lmerTest)
 #setting up working directory
 setwd("~/Polyploid_speciation/input/")
 
-
 #load datasets and analyze datasets
 gen<-read.table("biomass.csv", header=T, sep=";")
 gen$block<-as.factor(gen$block)

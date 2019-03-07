@@ -16,7 +16,7 @@ geom_dotplot(binaxis='y', stackdir='center',stackratio=1, dotsize=1,binwidth = 0
   theme(axis.text.x = element_text(colour="black",size=12), axis.title.x = element_text(size=12,colour = "black")) +
   theme(axis.text.y = element_text(colour="black",size=12), axis.title.y = element_text(size=12,colour = "black")) +
   ylim(0.5,2.5) +
-  labs(x="", y = "Genome size in C values(pg)")
+  labs(x="", y = "Genome size in C values (pg)")
 dev.off()
 
 ## test whether the genome size is significantly differnet from each other. 

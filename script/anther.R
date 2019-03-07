@@ -1,3 +1,4 @@
+#load R packages and libraries
 library(ggplot2)
 library(plyr)
 install.packages("devtools")
@@ -5,6 +6,7 @@ library(devtools)
 install_github("easyGgplot2", "kassambara")
 library(easyGgplot2)
 
+#setup working directory
 datapath <- '~/Polyploid_speciation/input/'
 outpath <- '~/Polyploid_speciation/output/'
 
