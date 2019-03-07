@@ -4,7 +4,7 @@ library(lme4)
 library(lmerTest)
 
 #setting up working directory
-setwd("~/Dropbox (Amherst College)/my_postdoc/useful_scripts/Polyploid_speciation/input/Luis/")
+setwd("~/Polyploid_speciation/input/")
 
 
 #load datasets and analyze datasets

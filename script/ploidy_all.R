@@ -3,12 +3,12 @@ install.packages("ggplot2")
 library(ggplot2)
 install.packages("multcomp")
 
-setwd("~/my_postdoc/plant/FC_results")
+setwd("~/Polyploid_speciation/input/")
 
-fc<-read.table("~/FC_results/results/flowcytometry_data.csv",header=T, sep=",")
+fc<-read.table("~/Polyploid_speciation/input/flowcytometry_data.csv",header=T, sep=",")
 str(fc)
 
-pdf("~/main_figures/Genomesize.pdf", width=8, height=8)
+pdf("~/Polyploid_speciation/output/Genomesize.pdf", width=8, height=8)
 fc$species <- factor(fc$species)
 fc$species <- reorder(fc$species, fc$order)
 ggplot(fc, aes(x=fc$species, y=C.values,group=species)) +
@@ -20,7 +20,7 @@ geom_dotplot(binaxis='y', stackdir='center',stackratio=1, dotsize=1,binwidth = 0
 dev.off()
 
 ## test whether the genome size is significantly differnet from each other. 
-genome_size<-read.table("~/FC_results/results/C_values.txt",header=T)
+genome_size<-read.table("~/Polyploid_speciation/input/C_values.txt",header=T)
 genome_size
 head(genome_size)
 str(genome_size)

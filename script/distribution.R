@@ -5,7 +5,7 @@ library(ggplot2)
 library(ggmap)
 library(maps)
 
-setwd("~/Wen-Juan/peduncle_mercurialis/population_distribution/results/")
+setwd("~/Polyploid_speciation/input/")
 
 locations <- read.csv("pop_locations.csv", header = T)
 names(locations)
