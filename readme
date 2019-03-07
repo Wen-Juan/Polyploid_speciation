@@ -1,1 +1,5 @@
-This project to assess the reproductive isolation between two hexaploid lineages, using common garden, phylogeneny, reciprocal crosses approaches.
+## This project is to assess the reproductive isolation between two hexaploid lineages in an anual plant Mercurialis annua, using common garden, phylogeny, and reciprocal crosses approaches.
+
+# the R codes to analyze the data are stored in the path: /Polyploid_speciation/script/
+
+# the input dataset files are stored in the path: /Polyploid_speciation/input/
